@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lists main.cpp
         Single_node.h
-        Single_list.h)
+        Single_list.h
+        Double_node.h)

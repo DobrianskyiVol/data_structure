@@ -167,12 +167,4 @@ public:
 
 };
 
-
-
-
-
-
-
-
-
 #endif //LISTS_SINGLE_LIST_H
