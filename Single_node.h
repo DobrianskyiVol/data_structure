@@ -7,7 +7,7 @@ namespace single_node{
     template<typename T>
     struct singleNode{
         T data;
-        std::shared_ptr<singleNode<T>> next;
+        std::unique_ptr<singleNode<T>> next;
 
         singleNode(const T &data):data{data},next{nullptr}{};
     };

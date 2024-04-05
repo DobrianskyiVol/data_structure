@@ -25,27 +25,25 @@ public:
 
     Single_list(const T &data): head{make_unique<>(data)}, size{1}{};
 
-    void InsertAtBeginning(const T &value){
-        std::unique_ptr<single_node::singleNode<T>> newNode = make_shared<single_node::singleNode<T>>(value);
-        if (!head){
-            head = newNode;
-        } else{
-            newNode->next = std::move(head);
-            head = newNode ;
-            size++;
-        }
-
+    void InsertAtBeginning(const  T &value){
+        std::unique_ptr<single_node::singleNode<T>> newNode = make_unique<single_node::singleNode<T>>(value);
+        newNode->next = std::move(head);
+        head = std::move(newNode);
+        size++;
     }
 
+
+
     void InsertAtEnd(const T &value){
-        std::unique_ptr<single_node::singleNode<T>> newNode = make_shared<single_node::singleNode<T>>(value);
+        std::unique_ptr<single_node::singleNode<T>> newNode = make_unique<single_node::singleNode<T>>(value);
         single_node::singleNode<T> *current = head.get();
         if (!current){
-            head = newNode;
+            head = std::move(newNode);
             size++;
+            return;
         }else{
             while (current->next){
-                current = current->next;
+                current = current->next.get();
             }
             current->next = std::move(newNode);
             size++;
@@ -57,7 +55,7 @@ public:
         if (!head){
             throw std::out_of_range("List is empty!");
         }
-        head = head->next;
+        head = std::move(head->next);
         --size;
     }
 
@@ -72,7 +70,7 @@ public:
         }
         single_node::singleNode<T> *current = head.get();
         while (current->next){
-            current = current->next;
+            current = current->next.get();
         }
         current->next.reset();
         --size;
@@ -81,22 +79,22 @@ public:
 
     void insertByIndex(const T &value,int index){
         check(index);
-        std::unique_ptr<single_node::singleNode<T>> newNode = make_shared<single_node::singleNode<T>>(value);
         if (index == 0) {
-            insertAtBeginning(newNode);
+            InsertAtBeginning(value);
             return;
         } else if (index == size) {
-            insertAtEnd(newNode);
+            InsertAtEnd(value);
             return;
         }
 
+        std::unique_ptr<single_node::singleNode<T>> newNode = make_unique<single_node::singleNode<T>>(value);
         single_node::singleNode<T> *current = head.get();
 
         for (int i = 0; i < index-1; ++i) {
-            current = current->next;
+            current = current->next.get();
         }
 
-        newNode->next = current->next;
+        newNode->next = std::move(current->next);
         current->next = std::move(newNode);
         size++;
     }
@@ -113,9 +111,9 @@ public:
 
         single_node::singleNode<T> *current = head.get();
         for (int i = 0; i < index-1; ++i) {
-            current = current->next;
+            current = current->next.get();
         }
-        current = std::move(current->next->next);
+         current->next = std::move(current->next->next);
         --size;
     }
 
@@ -124,8 +122,8 @@ public:
     }
 
     bool search(const T &value) const{
-        if (EmptyList())
-            throw std::out_of_range("List is empty!");
+//        if (EmptyList())
+//            throw std::out_of_range("List is empty!");
         single_node::singleNode<T> *current = head.get();
         while (current){
             if (current->data == value){
@@ -143,18 +141,21 @@ public:
             return true;
     }
 
-   friend ostream &operator  <<(ostream &os, const Single_list &obj){
-        single_node::singleNode<T> *current = obj.head.get();
-        os << "List Data: " << "\n";
+   friend ostream &operator<<(ostream &os, const Single_list &obj){
+       if (!obj.head) {
+           return os;
+       }
+       single_node::singleNode<T> *current = obj.head.get();
+        os << "List Data: " << endl;
        while (current!= nullptr){
            os << current->data << " ";
             current = current->next.get();
        }
-       os << endl;
+        os << endl;
        return os;
     }
 
-    Single_list operator [](int index){
+    T operator [](int index){
         check(index);
         single_node::singleNode<T> *current = head.get();
         for (int i = 0; i < index; ++i) {

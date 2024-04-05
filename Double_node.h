@@ -12,9 +12,9 @@ namespace double_node{
     struct Double_node{
         std:: shared_ptr<double_node::Double_node<T>> next;
         T data;
-        std:: shared_ptr<double_node::Double_node<T>> previous;
+        std:: weak_ptr<double_node::Double_node<T>> previous;
 
-        Double_node(const T &data):next{nullptr}, data{data}, previous{nullptr}{};
+        Double_node(const T &data):data{data}{};
     };
 }
 
