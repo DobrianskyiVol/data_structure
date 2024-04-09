@@ -12,4 +12,5 @@ add_executable(lists main.cpp
         Queue_node.h
         Queue_arr.h
         Stack.h
-        Stack_node.h)
+        Stack_node.h
+        Stack_arr.h)
