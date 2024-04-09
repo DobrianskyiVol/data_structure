@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "Queue.h"
 #include "Queue_arr.h"
+#include "Stack.h"
 
 //void single_list(){
 //    Single_list<int> list;
@@ -123,7 +124,22 @@ int main() {
 //    }catch (std::out_of_range &msg){
 //        std::cout << msg.what();
 //    }
-
+try {
+    Stack<int> stack;
+    stack.push(12);
+    stack.push(14);
+    stack.push(13);
+    std::cout << stack;
+    stack.pop();
+    std::cout << stack;
+    int b = stack.peek();
+    std::cout << b;
+    stack.pop();
+    stack.pop();
+    stack.pop();
+}catch (std::out_of_range &msg){
+    std:: cerr << msg.what();
+}
 
     return 0;
 }
