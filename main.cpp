@@ -6,6 +6,7 @@
 #include "Queue_arr.h"
 #include "Stack.h"
 #include "Stack_arr.h"
+#include "Output_Restricted_Queue.h"
 
 //void single_list(){
 //    Single_list<int> list;
@@ -152,6 +153,14 @@ int main() {
 //    arr.push(9);
 //    std::cout << arr;
 
+
+Output_Restricted_Queue<int> queue;
+int a =  25;
+queue.enqueue_end(25);
+queue.enqueue_start(26);
+std::cout << queue;
+queue.dequeue();
+std::cout << queue;
 
     return 0;
 }

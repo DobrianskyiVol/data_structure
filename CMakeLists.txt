@@ -13,4 +13,6 @@ add_executable(lists main.cpp
         Queue_arr.h
         Stack.h
         Stack_node.h
-        Stack_arr.h)
+        Stack_arr.h
+        Output_Restricted_Queue.h
+        ORQ_node.h)
