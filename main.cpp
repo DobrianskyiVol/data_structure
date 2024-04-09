@@ -108,21 +108,21 @@
 //}
 
 int main() {
-    try {
-        Queue_arr<int> q(5);
-        q.enqueue(2);
-        q.enqueue(5);
-        q.enqueue(65);
-        q.enqueue(65);
-        q.enqueue(65);
-        q.dequeue();
-        q.dequeue();
-        int a = q.peek();
-        std::cout << q;
-        std::cout << a;
-    }catch (std::out_of_range &msg){
-        std::cout << msg.what();
-    }
+//    try {
+//        Queue_arr<int> q(5);
+//        q.enqueue(2);
+//        q.enqueue(5);
+//        q.enqueue(65);
+//        q.enqueue(65);
+//        q.enqueue(65);
+//        q.dequeue();
+//        q.dequeue();
+//        int a = q.peek();
+//        std::cout << q;
+//        std::cout << a;
+//    }catch (std::out_of_range &msg){
+//        std::cout << msg.what();
+//    }
 
 
     return 0;
