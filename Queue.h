@@ -23,6 +23,7 @@ public:
             tail = newNode;
         }else{
             tail->previous = newNode;
+            newNode->next = tail;
             tail = newNode;
            // tail->previous = nullptr;
         }
@@ -35,10 +36,11 @@ public:
         }
         T dequeddata = head->data;
         if (size == 1){
-            head = head->previous;
-            head.reset();
+            head = nullptr;
+            tail = nullptr;
         } else{
             head = head->previous;
+            head->next = nullptr;
         }
         size--;
         return dequeddata;

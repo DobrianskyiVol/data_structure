@@ -153,14 +153,29 @@ int main() {
 //    arr.push(9);
 //    std::cout << arr;
 
-
-Output_Restricted_Queue<int> queue;
-int a =  25;
-queue.enqueue_end(25);
-queue.enqueue_start(26);
-std::cout << queue;
-queue.dequeue();
-std::cout << queue;
-
+//try {
+//    try {
+//        Output_Restricted_Queue<int> queue;
+//        queue.enqueue_end(25);
+//        queue.enqueue_end(25);
+//        queue.enqueue_start(26);
+//        std::cout << queue;
+//        queue.dequeue();
+//        std::cout << queue;
+//    }
+//    catch (std::out_of_range &exc){
+//        std::cout << exc.what();
+//    }
+//    Queue<int> queue;
+//    queue.enqueue(25);
+//    queue.enqueue(36);
+//    queue.enqueue(25);
+//    queue.enqueue(36);
+//    std::cout << queue;
+//    queue.dequeue();
+//    std::cout << queue;
+//}catch (std::out_of_range &exc){
+//    std::cerr << exc.what();
+//}
     return 0;
 }

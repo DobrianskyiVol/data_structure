@@ -23,6 +23,7 @@ public:
             head = newNode;
             tail = newNode;
         }else{
+            newNode->next = tail;
             tail->previous = std::move(newNode);
             tail = newNode;
             // tail->previous = nullptr;
@@ -37,7 +38,8 @@ public:
             head = newNode;
             tail = newNode;
         }
-        newNode->previous = std::move(head);
+        newNode->previous = head;
+        head->next = newNode;
         head = newNode;
         size++;
     }
@@ -48,10 +50,11 @@ public:
         }
         T dequeddata = head->data;
         if (size == 1){
-            head = head->previous;
-            head.reset();
+            head = nullptr;
+            tail = nullptr;
         } else{
             head = head->previous;
+            head->next = nullptr;
         }
         size--;
         return dequeddata;
