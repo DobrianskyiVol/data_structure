@@ -40,7 +40,7 @@ public:
             tail = nullptr;
         } else{
             head = head->previous;
-            head->next = nullptr;
+            head->next.lock() = nullptr;
         }
         size--;
         return dequeddata;

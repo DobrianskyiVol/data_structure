@@ -7,10 +7,10 @@ namespace queue_node{
     template <typename T>
     struct Queue_node
             {
-            std::shared_ptr<queue_node::Queue_node<T>> next;
+            std::weak_ptr<queue_node::Queue_node<T>> next;
             T data;
             std::shared_ptr<queue_node::Queue_node<T>> previous;
-            explicit Queue_node(const T &data):data{data},previous{nullptr},next{nullptr}{};
+            explicit Queue_node(const T &data):data{data}{};
 
             };
 }

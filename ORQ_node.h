@@ -8,8 +8,8 @@ namespace orq_node {
     struct ORQ_node{
         T data;
         std::shared_ptr<orq_node::ORQ_node<T>> previous;
-        std::shared_ptr<orq_node::ORQ_node<T>> next;
-        ORQ_node(const T &data):data{data},previous{nullptr},next{nullptr}{};
+        std::weak_ptr<orq_node::ORQ_node<T>> next;
+        ORQ_node(const T &data):data{data}{};
     };
 }
 
